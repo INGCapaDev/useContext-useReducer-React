@@ -1,4 +1,4 @@
-import { useSearchContext } from '../context/searchContext/searchHooks';
+import { useSearchContext } from '../context/searchContext/context';
 
 const Text = () => {
   const { searchText } = useSearchContext();

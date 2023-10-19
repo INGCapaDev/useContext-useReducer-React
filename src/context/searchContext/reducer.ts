@@ -1,33 +1,22 @@
-export const ACTIONS = {
-  SET_SEARCH_TEXT: 'setSearchText',
-  SET_IS_LOADING: 'setIsLoading',
-  SET_COUNT_PRODUCTS: 'setCountProducts',
-};
+import { SearchInitialState, SearchReducerActions } from './search';
 
-type ActionType = (typeof ACTIONS)[keyof typeof ACTIONS];
-
-export type Action = {
-  type: ActionType;
-  payload: string | boolean | number;
-};
-
-export const initialState = {
+export const initialState: SearchInitialState = {
   searchText: '',
   isLoading: false,
   countProducts: 0,
 };
 
 export const reducer = (
-  state: typeof initialState,
-  action: Action
-): typeof initialState => {
+  state: SearchInitialState,
+  action: SearchReducerActions
+): SearchInitialState => {
   switch (action.type) {
-    case ACTIONS.SET_SEARCH_TEXT:
-      return { ...state, searchText: action.payload as string };
-    case ACTIONS.SET_IS_LOADING:
-      return { ...state, isLoading: action.payload as boolean };
-    case ACTIONS.SET_COUNT_PRODUCTS:
-      return { ...state, countProducts: action.payload as number };
+    case 'SET_searchText':
+      return { ...state, searchText: action.payload };
+    case 'SET_isLoading':
+      return { ...state, isLoading: action.payload };
+    case 'SET_countProducts':
+      return { ...state, countProducts: action.payload };
     default:
       return state;
   }

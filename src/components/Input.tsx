@@ -1,16 +1,16 @@
 import {
-  useSearchActionsContext,
   useSearchContext,
-} from '../context/searchContext/searchHooks';
+  useSearchDispatch,
+} from '../context/searchContext/context';
 
 export const Input = () => {
   const { searchText } = useSearchContext();
-  const dispatch = useSearchActionsContext();
+  const dispatch = useSearchDispatch();
   return (
     <input
       type='text'
       onChange={(e) => {
-        dispatch({ type: 'setSearchText', payload: e.target.value });
+        dispatch({ type: 'SET_searchText', payload: e.target.value });
       }}
       value={searchText}
     />

@@ -1,16 +1,12 @@
-import { ACTIONS } from '../context/searchContext/reducer';
-import { useSearchActionsContext } from '../context/searchContext/searchHooks';
+import { useSearchDispatch } from '../context/searchContext/context';
 let rerender = 0;
 
 const Button = () => {
-  const dispatch = useSearchActionsContext();
+  const dispatch = useSearchDispatch();
   return (
     rerender++,
     (
-      <button
-        onClick={() =>
-          dispatch({ type: ACTIONS.SET_SEARCH_TEXT, payload: '' })
-        }>
+      <button onClick={() => dispatch({ type: 'SET_searchText', payload: '' })}>
         Clear render {rerender}
       </button>
     )
